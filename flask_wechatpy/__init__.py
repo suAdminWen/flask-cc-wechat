@@ -7,13 +7,7 @@ class Wechat(object):
 
     def init_app(self, app):
 
-        self.app_id = self.app.config.get('WXAPPID')
-        self.app_secret = self.app.config.get('WXAPPSECRET')
+        self.config = app.config
 
-        if hasattr(app, 'teardown_appcontext'):
-            app.teardown_appcontext(self.teardown)
-        else:
-            app.teardown_request(self.teardown)
-
-    def teardown(self, exception):
-        print('wechat')
+        assert self.config.get('WXAPPID'), 'WXAPPID must in config'
+        assert self.config.get('WXAPPSECRET'), 'WXAPPSECRET must in config'

@@ -2,7 +2,7 @@ import json
 import requests
 from urllib.parse import urlencode
 
-from .base import WXConfig
+from flask import current_app
 
 
 class Authorized(object):
@@ -11,8 +11,8 @@ class Authorized(object):
     """
 
     def __init__(self):
-        self.app_id = WXConfig().app_id
-        self.app_secret = WXConfig().app_secret
+        self.app_id = current_app.config.get('WXAPPID')
+        self.app_secret = current_app.config.get('WXAPPSECRET')
 
     def getCode(self, redirect_url, state):
         """
