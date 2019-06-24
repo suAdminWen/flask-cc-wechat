@@ -1,3 +1,6 @@
+WECHAT_API_URL = 'https://api.weixin.qq.com/'
+
+
 class Wechat(object):
 
     def __init__(self, app=None):

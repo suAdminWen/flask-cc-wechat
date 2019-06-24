@@ -13,8 +13,8 @@ wx.init_app(app)
 
 @app.route('/')
 def index():
-    tokenb = TokenUtil()
-    print(tokenb.access_token())
+    tokenb = TokenUtil.access_token()
+    print(tokenb)
 
     return 'ok'
 
