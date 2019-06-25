@@ -34,7 +34,7 @@ def _jsapi_ticket():
     :return access_token: 微信调用接口凭证
     """
     jsapi_ticket = ''
-    access_token = get_access_token()
+    access_token = TokenUtil.access_token()
     postUrl = WECHAT_API_URL + \
         "cgi-bin/ticket/getticket?access_token=%s&type=jsapi" % access_token
     url_resp = requests.get(postUrl)

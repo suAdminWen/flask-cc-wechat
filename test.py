@@ -1,6 +1,6 @@
 from flask import Flask
-from flask_wechatpy import Wechat
-from flask_wechatpy.token import TokenUtil
+from flask_cc_wechat import Wechat
+from flask_cc_wechat.token import TokenUtil
 
 app = Flask(__name__)
 
