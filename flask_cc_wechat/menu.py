@@ -1,5 +1,9 @@
+import logging
 import requests
 from . import WECHAT_API_URL
+from .token import TokenUtil
+
+logger = logging.getLogger(__name__)
 
 
 class Menu(object):
@@ -8,13 +12,12 @@ class Menu(object):
     """
 
     def __init__(self):
-        pass
+        self.token = TokenUtil.access_token()
 
-    def create(self, postData, accessToken):
+    def create(self, postData):
         postUrl = WECHAT_API_URL + \
-            "cgi-bin/menu/create?access_token=%s" % accessToken
+            "cgi-bin/menu/create?access_token=%s" % self.token
         request = requests.post(postUrl, data=postData.encode('utf-8'))
-        self.get_current_selfmenu_info(accessToken)
         if request.status_code == 200:
             return True
         else:
